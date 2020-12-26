@@ -3,6 +3,9 @@ function LanguageCard(props) {
     return (
         <div>
             <h1>{l.name}</h1>
+            <p>{l.paradigms}</p>
+            <p>{l.types}</p>
+            <p>{l.authors}</p>
             <p>{l.website}</p>
         </div>
     )

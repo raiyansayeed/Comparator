@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
 import SearchTag from "./search_tag";
+
 
 function SearchArea(props) {
     const [query, setQuery] = useState("");
-    const [queryList, setQueryList] = useState([]);
+    const [queryResults, setQueryResults] = useState([]);
 
     useEffect(() => {
 
@@ -11,9 +13,8 @@ function SearchArea(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const tmp = queryList.concat([query]);
-        setQueryList(tmp);
-        console.log("hi");
+        const tmp = props.queries.concat([query]);
+        props.onQueryChange(tmp);
     }
 
     return (
@@ -22,13 +23,14 @@ function SearchArea(props) {
                 <input
                     type="text"
                     name="name"
+                    placeholder="e.g Rust"
                     onChange={(e) => setQuery(e.target.value)}
                 />
 
                 <input type="submit" value="Submit" />
             </form>
             <div>
-                {queryList.map((q) => 
+                {props.queries.map((q) => 
                     <SearchTag text={q} />
                 )}
             </div>
