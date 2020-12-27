@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.languageCard {
+  border: 5px solid black;
+}

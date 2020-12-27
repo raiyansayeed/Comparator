@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { motion } from 'framer-motion';
 
 function LanguageCard(props) {
     let l = props.jsonData;
@@ -7,10 +8,15 @@ function LanguageCard(props) {
         e.preventDefault();
     }
 
-    var slug = "/lang/" + l.name;
+    var slug = "/lang/" + l.name.toLowerCase();
 
     return (
-        <div onClick={handleClick}>
+        <motion.div className="languageCard" onClick={handleClick} whileHover={{
+            scale: 1.2,
+            transition: {
+                duration: .2
+            }
+        }}>
             <h1>{l.name}</h1>
             <p>{l.paradigms}</p>
             <p>{l.types}</p>
@@ -19,7 +25,7 @@ function LanguageCard(props) {
             <button>
                 <Link href={slug}>More info!</Link>
             </button>
-        </div>
+        </motion.div>
     );
 }
 
