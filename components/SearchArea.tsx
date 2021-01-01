@@ -32,7 +32,7 @@ function SearchArea(props) {
     }
 
     return (
-        <div>
+        <div className="sticky top-0">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

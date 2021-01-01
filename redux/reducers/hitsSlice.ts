@@ -18,15 +18,9 @@ export const hitsSlice = createSlice({
         updateHits: (state, action) => {
             var queries = action.payload[0];
             var languages = action.payload[1];
-            console.log("payload");
-            console.log(queries);
-            console.log(languages);
             var tmp = [];
             queries.forEach(function (query, index) {
                 languages.forEach(function (item, index) {
-                    console.log("query");
-                    console.log(query);
-                    console.log(item);
                     if (
                         item["keywords"].includes(query)
                     ) {
@@ -34,9 +28,6 @@ export const hitsSlice = createSlice({
                     }
                 });
             });
-            console.log("createHits");
-            // console.log(queryResults);
-            // push lang object into query results
             state.list = tmp;
         },
     },

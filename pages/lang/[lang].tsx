@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { selectLanguages } from "../../redux/reducers/languageSlice";
+import SearchArea from "../../components/SearchArea"
+import QueryHits from "../../components/QueryHits"
+import styles from "../../styles/Home.module.css";
+
 
 function LanguagePage(props) {
     const router = useRouter();
@@ -8,14 +12,14 @@ function LanguagePage(props) {
 
     const languages = useSelector(selectLanguages);
 
-    const item = languages.find((e) => e.name.toLowerCase() == lang);
-
-    // const lang = props.languages[id];
+    var item = languages.find((e) => e.name.toLowerCase() == lang);
 
     return (
-            <div>
-                <h1>{item.paradigms}</h1>
-            </div>
+        <div className={"bg-yellow-500 ".concat(styles.container)}>
+            <SearchArea />
+            <h1>Page info</h1>
+            {typeof item !== "undefined" ? <h1>{item.paradigms}</h1> : <h1>404 Error</h1>}
+        </div>
     );
 }
 

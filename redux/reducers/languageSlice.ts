@@ -12,26 +12,59 @@ var origList = [
         ],
         types: ["Compiled", "Interpreted"],
         website: "N/A",
-        authors: ["Brendan Eich"],
+        creators: ["Brendan Eich"],
     },
     {
         name: "Rust",
         paradigms: ["Functional", "Imperative", "Structured"],
         types: ["Compiled"],
         website: "www.rust-lang.org",
-        authors: ["Graydon Hoare"],
+        creators: ["Graydon Hoare"],
     },
+    {
+        name: "Elixir",
+        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        types: ["Compiled"],
+        website: "www.elixir-lang.org",
+        creators: ["Jose Valim"],
+    },
+    {
+        name: "Elixir",
+        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        types: ["Compiled"],
+        website: "www.elixir-lang.org",
+        creators: ["Jose Valim"],
+    },
+    {
+        name: "Elixir",
+        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        types: ["Compiled"],
+        website: "www.elixir-lang.org",
+        creators: ["Jose Valim"],
+    },
+    {
+        name: "Elixir",
+        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        types: ["Compiled"],
+        website: "www.elixir-lang.org",
+        creators: ["Jose Valim"],
+    },
+    {
+        name: "Elixir",
+        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        types: ["Compiled"],
+        website: "www.elixir-lang.org",
+        creators: ["Jose Valim"],
+    },
+
 ]
 
 var keywordList = [];
 // create keywords for each lang
 function createKeywords(l_list) {
-    console.log("effect");
-    console.log(l_list);
     var newList = [];
     l_list.forEach(function (item, index) {
         var tmp = [];
-        // console.log(item)
         Object.keys(item).forEach(function (key, index) {
             var k = item[key];
 
@@ -70,8 +103,6 @@ function createKeywords(l_list) {
         else newLang["keywords"] = tmp;
         newList.push(newLang);
     });
-    console.log("New list");
-    console.log(newList);
     return newList;
 }
 
