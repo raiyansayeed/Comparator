@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -120,3 +120,10 @@
     flex-direction: column;
   }
 }
+
+/* .test {
+  background: black;
+  border-radius: 30px;
+  width: 150px;
+  height: 150px;
+} */

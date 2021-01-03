@@ -1,34 +1,34 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import { GetStaticProps } from "next";
 import SearchTag from "./SearchTag";
-import { 
-    addTag,
-    selectQueries
-} from '../redux/reducers/querySlice'
-import { 
-    updateHits
-} from '../redux/reducers/hitsSlice'
+import { addTag, selectQueries } from "../redux/reducers/querySlice";
+import { updateHits } from "../redux/reducers/hitsSlice";
 import { selectLanguages } from "../redux/reducers/languageSlice";
 
 function SearchArea(props) {
     const [query, setQuery] = useState("");
     // const [queryResults, setQueryResults] = useState([]);
+    const [error, setError] = useState("");
 
     const queries = useSelector(selectQueries);
     const languages = useSelector(selectLanguages);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-
-    })
+    useEffect(() => {});
 
     function handleSubmit(e) {
         e.preventDefault();
-        // const tmp = props.queries.concat([query]);
-        // props.onQueryChange(tmp);
-        dispatch(addTag(query));
-        dispatch(updateHits([queries.concat(query), languages]))
+
+        // add query if it isn't in list already
+        if (!queries.includes(query.toLowerCase())) {
+            dispatch(addTag(query.toLowerCase()))
+            dispatch(updateHits([queries.concat([query.toLowerCase()]), languages]));
+            setQuery("")
+        } else {
+            setError(`Error: ${query} is already in your search list`);
+        }
+
     }
 
     return (
@@ -38,15 +38,17 @@ function SearchArea(props) {
                     type="text"
                     name="name"
                     placeholder="e.g Rust"
+                    value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
 
                 <input type="submit" value="Submit" />
             </form>
+            <p>{error.toLowerCase()}</p>
             <div>
-                {queries.map((t) => 
-                    <SearchTag text={t}/>
-                )}
+                {queries.map((t) => (
+                    <SearchTag text={t} />
+                ))}
             </div>
         </div>
     );

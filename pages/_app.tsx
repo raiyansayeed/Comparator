@@ -1,7 +1,23 @@
 import '../styles/globals.css'
+import '../styles/prism.css';
 import { Provider } from "react-redux";
 import store from "../redux/store";
 import { motion } from 'framer-motion';
+
+// to remove errors from ion-icon web-component
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ion-icon': IonIconProps
+    }
+  }
+}
+
+interface IonIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+  class: string,
+  name: string,
+  size?: string
+}
 
 function MyApp({ Component, pageProps, router}) {
   return (
@@ -16,7 +32,9 @@ function MyApp({ Component, pageProps, router}) {
       }}>
       <Component {...pageProps} />
       </motion.div>
+      <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     </Provider>
+    
   )
 }
 

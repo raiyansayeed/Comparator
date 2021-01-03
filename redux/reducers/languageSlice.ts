@@ -13,6 +13,19 @@ var origList = [
         types: ["Compiled", "Interpreted"],
         website: "N/A",
         creators: ["Brendan Eich"],
+        hello_world: 
+        `
+        var i;
+        var fib = []; // Initialize array!
+        
+        fib[0] = 0;
+        fib[1] = 1;
+        for (i = 2; i <= 10; i++) {
+          // Next fibonacci number = previous + one before previous
+          // Translated to JavaScript:
+          fib[i] = fib[i - 2] + fib[i - 1];
+          console.log(fib[i]);
+        }`
     },
     {
         name: "Rust",
@@ -20,6 +33,7 @@ var origList = [
         types: ["Compiled"],
         website: "www.rust-lang.org",
         creators: ["Graydon Hoare"],
+        hello_world: `println("Hello World!")`
     },
     {
         name: "Elixir",
@@ -27,6 +41,7 @@ var origList = [
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
+        hello_world: `IO.puts("Hello World!")`
     },
     {
         name: "Elixir",
@@ -80,7 +95,7 @@ function createKeywords(l_list) {
                 )
                     return;
 
-                tmp.push(item[key]);
+                tmp.push(item[key].toLowerCase());
             }
 
             // handle array
@@ -93,7 +108,7 @@ function createKeywords(l_list) {
                     )
                         return;
 
-                    tmp.push(k_item);
+                    tmp.push(k_item.toLowerCase());
                 });
             }
         });

@@ -1,16 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux'
 import {
-    selectHits
+    selectHits,
+    selectInList,
 } from "../redux/reducers/hitsSlice"
 import LanguageCard from "./LanguageCard";
 
 function QueryHits() {
     const hits = useSelector(selectHits);
+    const inList: boolean = useSelector(selectInList);
 
     return (
         <div>
-            <h1>Query Results</h1>
             <ul>
+                { !inList ? (
+                    <p></p>
+                ) : (
+                    <p>Query already in requirements</p>
+                )}
                 {hits.map((l) => (
                     <LanguageCard jsonData={l} />
                 ))}

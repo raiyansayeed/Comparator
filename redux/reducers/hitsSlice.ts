@@ -1,13 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from 'react-redux'
-import {
-    selectLanguages
-} from "./languageSlice";
-import {
-    querySlice,
-    selectQueries,
-    
-} from "./querySlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectLanguages } from "./languageSlice";
+import { querySlice, selectQueries } from "./querySlice";
 
 export const hitsSlice = createSlice({
     name: "hits",
@@ -16,19 +10,20 @@ export const hitsSlice = createSlice({
     },
     reducers: {
         updateHits: (state, action) => {
-            var queries = action.payload[0];
+            var queries: string[] = action.payload[0];
             var languages = action.payload[1];
             var tmp = [];
-            queries.forEach(function (query, index) {
+            // check if any language matches ALL words in queries
+            if (Array.isArray(queries) && queries.length) {
                 languages.forEach(function (item, index) {
-                    if (
-                        item["keywords"].includes(query)
-                    ) {
+                    if (queries.every((val) => item["keywords"].includes(val))) {
                         tmp.push(item);
                     }
                 });
-            });
-            state.list = tmp;
+                state.list = tmp;
+            } else {
+                state.list = [];
+            }
         },
     },
 });
@@ -36,5 +31,6 @@ export const hitsSlice = createSlice({
 export const { updateHits } = hitsSlice.actions;
 
 export const selectHits = (state) => state.hits.list;
+export const selectInList = (state) => state.hits.inList;
 
 export default hitsSlice.reducer;
