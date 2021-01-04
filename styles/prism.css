@@ -4,6 +4,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
+ * EDITED
  */
 
 code[class*="language-"],
@@ -14,7 +15,7 @@ pre[class*="language-"] {
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	font-size: 1em;
 	text-align: left;
-	white-space: pre;
+	white-space: pre-wrap;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;

@@ -17,7 +17,7 @@ type Language = {
 
 function Home(pageProps) {
     return (
-        <div className={styles.container}>
+        <div className="flex flex-col items-center py-20 px-5">
             <Head>
                 <title>Prog Lang Website</title>
                 <link rel="icon" href="/favicon.ico" />

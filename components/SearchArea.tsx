@@ -10,12 +10,27 @@ function SearchArea(props) {
     const [query, setQuery] = useState("");
     // const [queryResults, setQueryResults] = useState([]);
     const [error, setError] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
+
+    const test = ["bruh"];
 
     const queries = useSelector(selectQueries);
     const languages = useSelector(selectLanguages);
     const dispatch = useDispatch();
 
     useEffect(() => {});
+
+    function onTextChange(e) {
+        const val = e.target.value;
+        setQuery(val);
+        if (val.length > 0) {
+            const regex = new RegExp(`^${val}`, `i`);
+            console.log(test.sort().filter(v => regex.test(v)));
+            // console.log(val);
+            setSuggestions(test.sort().filter(v => regex.test(v)));
+
+          }
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -33,16 +48,20 @@ function SearchArea(props) {
 
     return (
         <div className="sticky top-0">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 <input
                     type="text"
                     name="name"
                     placeholder="e.g Rust"
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={onTextChange}
                 />
-
                 <input type="submit" value="Submit" />
+                <div className="suggestions">
+                    <ul>
+                        {suggestions.map(kw => <li key={kw}>{kw}</li>)}
+                    </ul>
+                </div>
             </form>
             <p>{error.toLowerCase()}</p>
             <div>

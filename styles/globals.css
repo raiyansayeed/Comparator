@@ -22,3 +22,45 @@ a {
 .languageCard {
   border: 5px solid black;
 }
+
+.suggestions{
+  width: 100%;
+  border: 1px solid gray;
+  box-shadow: 0 0 1px rgba(0,0,0,0.1), 0 2px 4px 1px rgba(0,0,0, .18);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.73);
+ }
+  
+ .suggestions input{
+  width: 100%;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.73);
+  padding: 10px 5px ;
+  box-sizing: border-box;
+  outline: none;
+  
+ }
+ .suggestions ul::before{
+  content: '';
+ }
+  
+ .suggestions ul{
+ list-style-type: none;
+ text-align: left;
+ margin: 0;
+ padding: 0;
+ border-top: 1px solid gray;
+ }
+  
+ .suggestions li{
+  padding: 10px 5px ;
+  cursor: pointer;
+ }
+  
+ .suggestions li:hover{
+  background: lightgray;
+  text-decoration: underline;
+ }

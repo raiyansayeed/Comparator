@@ -21,43 +21,42 @@ function LanguagePage(props) {
     });
 
     return (
-        <div className={"grid ".concat(styles.container)}>
+        <div className="flex-grow flex-col items-center py-20 px-5">
             <Link href="/">
                 <motion.button
                     whileTap={{ scale: 1.2 }}
-                    className="absolute top-0 left-0"
+                    className="absolute top-5 left-5"
                 >
                     <ion-icon
                         name="arrow-back-outline"
                         size="large"
-                        class="absolute top-0 left-0"
                     ></ion-icon>
                 </motion.button>
             </Link>
-            <h1>Page info</h1>
             {typeof item !== "undefined" ? (
                 <ul>
-                    <li>
-                        <b>{item.name}</b>
+                    <li className="text-center m-5 ">
+                        <p className="font-bold text-6xl">{item.name}</p>
                     </li>
-                    <li>
-                        <u>Paradigms: </u>
-                        {item.paradigms.join(", ")}
+                    <li className="m-2">
+                        <p className="underline text-xl">Paradigms: </p>
+                        
+                        <p>{item.paradigms.join(", ")}</p>
                     </li>
-                    <li>
-                        <u>Types: </u>
-                        {item.types.join(", ")}
+                    <li className="m-2">
+                        <p className="underline text-xl">Types: </p>
+                        <p>{item.types.join(", ")}</p>
                     </li>
-                    <li>
-                        <u>Creators: </u>
-                        {item.creators.join(", ")}
+                    <li className="m-2">
+                        <p className="underline text-xl">Creators: </p>
+                        <p>{item.creators.join(", ")}</p>
                     </li>
-                    <li>
-                        <u>Website: </u>
-                        {item.website}
+                    <li className="m-2">
+                        <p className="underline text-xl">Website: </p>
+                        <p>{item.website}</p>
                     </li>
-                    <li>
-                        <u>Sample hello world code</u>
+                    <li className="m-2">
+                        <p className="underline text-xl">Sample hello world code</p>
                         <pre>
                             <code
                                 className={
