@@ -53,7 +53,7 @@ function LanguagePage(props) {
                     </li>
                     <li className="m-2">
                         <p className="underline text-xl">Website: </p>
-                        <p>{item.website}</p>
+                        <a href={item.website}>{item.website}</a>
                     </li>
                     <li className="m-2">
                         <p className="underline text-xl">Sample hello world code</p>

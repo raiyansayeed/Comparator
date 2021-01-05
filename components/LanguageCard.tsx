@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
+import { selectHits } from "../redux/reducers/hitsSlice";
 
 function LanguageCard(props) {
-    let l = props.jsonData;
+    const hits = useSelector(selectHits);
+    // obj containing properties of a language that match with current queries
+    let info_obj = props.infoData;
 
     function handleClick(e) {
         e.preventDefault();
     }
 
-    var slug = "/lang/" + l.name.toLowerCase();
+    var slug = "/lang/" + info_obj["name"].toLowerCase();
 
     return (
         <motion.div
@@ -23,9 +27,31 @@ function LanguageCard(props) {
         >
             <ul>
                 <li>
-                    <b>{l.name}</b>
+                    <b>{info_obj["name"]}</b>
                 </li>
-                <li>
+                {Object.keys(info_obj).map((prop) => {
+                    // TODO handle string vals
+                    // ignore name prop as its already shown above
+                    if (prop != "name" && prop != "keywords") {
+                        console.log(`prop: ${info_obj[prop]}`);
+                        var value = "";
+                        if (info_obj[prop] instanceof Array) {
+                            value = ` ${info_obj[prop].join(", ")}`
+                        } else if (typeof info_obj[prop] == "string" || info_obj[prop] instanceof String) {
+                            value = ` ${info_obj[prop]}`;
+                        }
+                        return (
+                            <li>
+                                {/* Capitalize first letter of every word in prop */}
+                                <u>{`${prop.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}:`}</u>
+                                {/* TODO add highlighting to matching prop words */}
+                                {value}
+                            </li>
+                        );
+                    }
+                    else return null;
+                })}
+                {/* <li>
                     <u>Paradigms: </u>
                     {l.paradigms.join(", ")}
                 </li>
@@ -40,7 +66,8 @@ function LanguageCard(props) {
                 <li>
                     <u>Website: </u>
                     {l.website}
-                </li>
+                </li> */}
+
                 <li>
                     <button>
                         <Link href={slug}>More info!</Link>

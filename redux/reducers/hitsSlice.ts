@@ -31,6 +31,5 @@ export const hitsSlice = createSlice({
 export const { updateHits } = hitsSlice.actions;
 
 export const selectHits = (state) => state.hits.list;
-export const selectInList = (state) => state.hits.inList;
 
 export default hitsSlice.reducer;

@@ -6,15 +6,17 @@ type Language = {
     types: string[];
     website: string;
     creators: string[];
+    garbage_collected: string;
     hello_world: string;
 };
 
-type LanguageWithKw = {
+export type LanguageWithKw = {
     name: string;
     paradigms: string[];
     types: string[];
     website: string;
     creators: string[];
+    garbage_collected: string;
     hello_world: string;
     keywords: string[];
 };
@@ -32,6 +34,7 @@ var origList = [
         types: ["Compiled", "Interpreted"],
         website: "N/A",
         creators: ["Brendan Eich"],
+        garbage_collected: "Yes",
         hello_world: `
         var i;
         var fib = []; // Initialize array!
@@ -49,8 +52,9 @@ var origList = [
         name: "Rust",
         paradigms: ["Functional", "Imperative", "Structured"],
         types: ["Compiled"],
-        website: "www.rust-lang.org",
+        website: "https://www.rust-lang.org",
         creators: ["Graydon Hoare"],
+        garbage_collected: "No",
         hello_world: `println("Hello World!")`,
     },
     {
@@ -62,8 +66,9 @@ var origList = [
             "Process-oriented",
         ],
         types: ["Compiled"],
-        website: "www.elixir-lang.org",
+        website: "https://www.elixir-lang.org",
         creators: ["Jose Valim"],
+        garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
     {
@@ -75,8 +80,9 @@ var origList = [
             "Process-oriented",
         ],
         types: ["Compiled"],
-        website: "www.elixir-lang.org",
+        website: "https://www.elixir-lang.org",
         creators: ["Jose Valim"],
+        garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
     {
@@ -88,8 +94,9 @@ var origList = [
             "Process-oriented",
         ],
         types: ["Compiled"],
-        website: "www.elixir-lang.org",
+        website: "https://www.elixir-lang.org",
         creators: ["Jose Valim"],
+        garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
     {
@@ -101,8 +108,9 @@ var origList = [
             "Process-oriented",
         ],
         types: ["Compiled"],
-        website: "www.elixir-lang.org",
+        website: "https://www.elixir-lang.org",
         creators: ["Jose Valim"],
+        garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
     {
@@ -114,8 +122,9 @@ var origList = [
             "Process-oriented",
         ],
         types: ["Compiled"],
-        website: "www.elixir-lang.org",
+        website: "https://www.elixir-lang.org",
         creators: ["Jose Valim"],
+        garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
 ];
