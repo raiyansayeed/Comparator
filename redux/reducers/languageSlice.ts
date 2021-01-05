@@ -1,5 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type Language = {
+    name: string;
+    paradigms: string[];
+    types: string[];
+    website: string;
+    creators: string[];
+    hello_world: string;
+};
+
+type LanguageWithKw = {
+    name: string;
+    paradigms: string[];
+    types: string[];
+    website: string;
+    creators: string[];
+    hello_world: string;
+    keywords: string[];
+};
+
 var origList = [
     {
         name: "Javascript",
@@ -13,8 +32,7 @@ var origList = [
         types: ["Compiled", "Interpreted"],
         website: "N/A",
         creators: ["Brendan Eich"],
-        hello_world: 
-        `
+        hello_world: `
         var i;
         var fib = []; // Initialize array!
         
@@ -25,7 +43,7 @@ var origList = [
           // Translated to JavaScript:
           fib[i] = fib[i - 2] + fib[i - 1];
           console.log(fib[i]);
-        }`
+        }`,
     },
     {
         name: "Rust",
@@ -33,83 +51,120 @@ var origList = [
         types: ["Compiled"],
         website: "www.rust-lang.org",
         creators: ["Graydon Hoare"],
-        hello_world: `println("Hello World!")`
+        hello_world: `println("Hello World!")`,
     },
     {
         name: "Elixir",
-        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        paradigms: [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-oriented",
+        ],
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
-        hello_world: `IO.puts("Hello World!")`
+        hello_world: `IO.puts("Hello World!")`,
     },
     {
         name: "Elixir",
-        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        paradigms: [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-oriented",
+        ],
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
+        hello_world: `IO.puts("Hello World!")`,
     },
     {
         name: "Elixir",
-        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        paradigms: [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-oriented",
+        ],
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
+        hello_world: `IO.puts("Hello World!")`,
     },
     {
         name: "Elixir",
-        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        paradigms: [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-oriented",
+        ],
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
+        hello_world: `IO.puts("Hello World!")`,
     },
     {
         name: "Elixir",
-        paradigms: ["Functional", "Concurrent", "Distributed", "Process-oriented"],
+        paradigms: [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-oriented",
+        ],
         types: ["Compiled"],
         website: "www.elixir-lang.org",
         creators: ["Jose Valim"],
+        hello_world: `IO.puts("Hello World!")`,
     },
+];
 
-]
-
-var keywordList = [];
 // create keywords for each lang
-function createKeywords(l_list) {
+function createKeywords(l_list: Language[]) {
     var newList = [];
     l_list.forEach(function (item, index) {
         var tmp = [];
+        // get values from each property of Language object
         Object.keys(item).forEach(function (key, index) {
-            var k = item[key];
+            switch (key) {
+                // list of unnecessary properties to tag like hello_world source code
+                case "hello_world":
+                    break;
+                case "website":
+                    break;
+                default: {
+                    var value = item[key];
 
-            // handle single str
-            if (typeof k === "string" || k instanceof String) {
-                // handle N/A case
-                if (k == "N/A") return;
+                    // handle single str
+                    if (typeof value === "string" || value instanceof String) {
+                        // handle N/A case
+                        if (value == "N/A") return;
 
-                // handle duplicates
-                if (
-                    item.hasOwnProperty("keywords") &&
-                    item["keywords"].includes(k)
-                )
-                    return;
+                        // handle duplicates
+                        if (
+                            item.hasOwnProperty("keywords") &&
+                            item["keywords"].includes(value)
+                        )
+                            return;
 
-                tmp.push(item[key].toLowerCase());
-            }
+                        tmp.push(item[key].toLowerCase());
+                    }
 
-            // handle array
-            if (k instanceof Array) {
-                k.forEach(function (k_item, index) {
-                    // handle duplicates
-                    if (
-                        item.hasOwnProperty("keywords") &&
-                        item["keywords"].includes(k_item)
-                    )
-                        return;
+                    // handle array
+                    if (value instanceof Array) {
+                        value.forEach(function (k_item, index) {
+                            // handle duplicates
+                            if (
+                                item.hasOwnProperty("keywords") &&
+                                item["keywords"].includes(k_item)
+                            )
+                                return;
 
-                    tmp.push(k_item.toLowerCase());
-                });
+                            tmp.push(k_item.toLowerCase());
+                        });
+                    }
+                }
             }
         });
         var newLang = item;
@@ -121,14 +176,31 @@ function createKeywords(l_list) {
     return newList;
 }
 
+function createAllKeyWords(l_list: LanguageWithKw[]) {
+    let new_kw_list = [];
+
+    // add all keywords from each lang
+    l_list.forEach(function (item, index) {
+        new_kw_list = new_kw_list.concat(item.keywords);
+    });
+
+    // remove duplicates
+    new_kw_list = new_kw_list.filter((v, i, a) => a.indexOf(v) === i);
+    console.log(new_kw_list);
+
+    return new_kw_list;
+}
+
 export const languageSlice = createSlice({
     name: "languages",
     initialState: {
         list: createKeywords(origList),
+        kw_list: createAllKeyWords(createKeywords(origList)),
     },
     reducers: {},
 });
 
 export const selectLanguages = (state) => state.languages.list;
+export const selectKwList = (state) => state.languages.kw_list;
 
 export default languageSlice.reducer;

@@ -15,6 +15,12 @@ export const querySlice = createSlice({
             };
         },
         addTag: (state, action) => {
+            // const tmp = state.list;
+            // tmp.push(action.payload);
+            // return {
+            //     ...state,
+            //     list: tmp,
+            // }
             state.list.push(action.payload);
         },
     },
