@@ -6,11 +6,10 @@ import { addTag, selectQueries } from "../redux/reducers/querySlice";
 import { updateHits } from "../redux/reducers/hitsSlice";
 import { selectLanguages } from "../redux/reducers/languageSlice";
 import { selectKwList } from "../redux/reducers/languageSlice";
-import { Input, Button } from "@chakra-ui/react";
+import { Input, Button, useToast } from "@chakra-ui/react";
 
 function SearchArea(props) {
     const [query, setQuery] = useState("");
-    const [error, setError] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [itemPosition, setItemPosition] = useState(0);
 
@@ -18,6 +17,7 @@ function SearchArea(props) {
     const languages = useSelector(selectLanguages);
     const kw_list = useSelector(selectKwList);
     const dispatch = useDispatch();
+    const toast = useToast()
 
     useEffect(() => {});
 
@@ -52,9 +52,16 @@ function SearchArea(props) {
                 updateHits([queries.concat([query.toLowerCase()]), languages])
             );
             setQuery("");
-            setError("");
         } else {
-            setError(`Error: ${query} is already in your search list`);
+            // setError(`Error: ${query} is already in your search list`);
+            toast.closeAll();
+            toast({
+                title: "An error occurred.",
+                description: `${query} is already in your search list`,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              })
         }
     }
 
@@ -66,9 +73,16 @@ function SearchArea(props) {
                 updateHits([queries.concat([kw.toLowerCase()]), languages])
             );
             setQuery("");
-            setError("");
         } else {
-            setError(`Error: ${kw} is already in your search list`);
+            // setError(`Error: ${kw} is already in your search list`);
+            toast.closeAll();
+            toast({
+                title: "An error occurred.",
+                description: `${kw} is already in your search list`,
+                status: "error",
+                duration: 1000,
+                isClosable: true,
+              })
         }
     }
 
@@ -123,8 +137,6 @@ function SearchArea(props) {
                     )}
                 </div>
             </form>
-
-            <p>{error.toLowerCase()}</p>
 
             <div className="flex flex-row flex-wrap">
                 {queries.map((t) => (
