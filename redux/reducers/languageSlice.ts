@@ -154,10 +154,12 @@ function createKeywords(l_list: Language[]) {
                         if (
                             item.hasOwnProperty("keywords") &&
                             item["keywords"].includes(value)
-                        )
+                        )                       
                             return;
 
-                        tmp.push(item[key].toLowerCase());
+                        // handle bool vals. replace _ with space so it matches language card kw implementation
+                        if (value == "Yes" || value == "No") tmp.push(`${key}: ${item[key].toLowerCase()}`);
+                        else tmp.push(item[key].toLowerCase());
                     }
 
                     // handle array

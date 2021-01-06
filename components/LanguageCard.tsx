@@ -2,9 +2,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { selectHits } from "../redux/reducers/hitsSlice";
+import { selectQueries } from "../redux/reducers/querySlice";
 
 function LanguageCard(props) {
     const hits = useSelector(selectHits);
+    const queries = useSelector(selectQueries);
     // obj containing properties of a language that match with current queries
     let info_obj = props.infoData;
 
@@ -13,6 +15,8 @@ function LanguageCard(props) {
     }
 
     var slug = "/lang/" + info_obj["name"].toLowerCase();
+
+    console.log(info_obj);
 
     return (
         <motion.div
@@ -34,11 +38,30 @@ function LanguageCard(props) {
                     // ignore name prop as its already shown above
                     if (prop != "name" && prop != "keywords") {
                         console.log(`prop: ${info_obj[prop]}`);
-                        var value = "";
+                        var value;
                         if (info_obj[prop] instanceof Array) {
-                            value = ` ${info_obj[prop].join(", ")}`
+                            value = (
+                                <>
+                                    {info_obj[prop].map((val, index) => {
+                                        // ignore comma for last item
+                                        if (index == info_obj[prop].length - 1) {
+                                            return <span> {val}</span>
+                                        } else if (queries.includes(val.toLowerCase()) || queries.includes(`${prop.toLowerCase()}: ${val.toLowerCase()}`)) {
+                                            if (index == info_obj[prop].length - 1)
+                                                return <span className="bg-yellow-500"> {val} </span>
+                                            else 
+                                            return <span> <span className="bg-yellow-500">{val}</span>, </span>
+                                        }
+                                        else {
+                                            return <span> {val}, </span>
+                                        }
+                                    })
+                                    }
+                                </>
+                            )
                         } else if (typeof info_obj[prop] == "string" || info_obj[prop] instanceof String) {
-                            value = ` ${info_obj[prop]}`;
+                            // value = ` ${info_obj[prop]}`;
+                            value = <span> <span className="bg-yellow-500">{info_obj[prop]}</span></span>
                         }
                         return (
                             <li>
