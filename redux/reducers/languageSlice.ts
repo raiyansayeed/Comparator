@@ -63,7 +63,7 @@ var origList = [
             "Functional",
             "Concurrent",
             "Distributed",
-            "Process-oriented",
+            "Process-Oriented",
         ],
         types: ["Compiled"],
         website: "https://www.elixir-lang.org",
@@ -77,7 +77,7 @@ var origList = [
             "Functional",
             "Concurrent",
             "Distributed",
-            "Process-oriented",
+            "Process-Oriented",
         ],
         types: ["Compiled"],
         website: "https://www.elixir-lang.org",
@@ -91,7 +91,7 @@ var origList = [
             "Functional",
             "Concurrent",
             "Distributed",
-            "Process-oriented",
+            "Process-Oriented",
         ],
         types: ["Compiled"],
         website: "https://www.elixir-lang.org",
@@ -105,7 +105,7 @@ var origList = [
             "Functional",
             "Concurrent",
             "Distributed",
-            "Process-oriented",
+            "Process-Oriented",
         ],
         types: ["Compiled"],
         website: "https://www.elixir-lang.org",
@@ -119,7 +119,7 @@ var origList = [
             "Functional",
             "Concurrent",
             "Distributed",
-            "Process-oriented",
+            "Process-Oriented",
         ],
         types: ["Compiled"],
         website: "https://www.elixir-lang.org",
@@ -197,7 +197,7 @@ function createAllKeyWords(l_list: LanguageWithKw[]) {
 
     // remove duplicates
     new_kw_list = new_kw_list.filter((v, i, a) => a.indexOf(v) === i);
-    console.log(new_kw_list);
+    // console.log(new_kw_list);
 
     return new_kw_list;
 }

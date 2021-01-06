@@ -16,8 +16,6 @@ function LanguageCard(props) {
 
     var slug = "/lang/" + info_obj["name"].toLowerCase();
 
-    console.log(info_obj);
-
     return (
         <motion.div
             className="languageCard p-6 m-6 mx-auto rounded-xl flex items-center"
@@ -33,11 +31,14 @@ function LanguageCard(props) {
                 <li>
                     <b>{info_obj["name"]}</b>
                 </li>
-                {Object.keys(info_obj).map((prop) => {
+                {Object.keys(info_obj).map((prop, index) => {
                     // TODO handle string vals
+                    
+                    // only put 4 keywords on a language card
+                    if (index > 4) return null
+
                     // ignore name prop as its already shown above
                     if (prop != "name" && prop != "keywords") {
-                        console.log(`prop: ${info_obj[prop]}`);
                         var value;
                         if (info_obj[prop] instanceof Array) {
                             value = (
@@ -46,7 +47,9 @@ function LanguageCard(props) {
                                         // ignore comma for last item
                                         if (index == info_obj[prop].length - 1) {
                                             return <span> {val}</span>
-                                        } else if (queries.includes(val.toLowerCase()) || queries.includes(`${prop.toLowerCase()}: ${val.toLowerCase()}`)) {
+                                        } 
+                                        // check if str or (bool)str is in queries
+                                        else if (queries.includes(val.toLowerCase())) {
                                             if (index == info_obj[prop].length - 1)
                                                 return <span className="bg-yellow-500"> {val} </span>
                                             else 
@@ -61,36 +64,22 @@ function LanguageCard(props) {
                             )
                         } else if (typeof info_obj[prop] == "string" || info_obj[prop] instanceof String) {
                             // value = ` ${info_obj[prop]}`;
-                            value = <span> <span className="bg-yellow-500">{info_obj[prop]}</span></span>
+                            // check for matching str or (bool)str val
+                            if (queries.includes(info_obj[prop].toLowerCase()) || queries.includes(`${prop}: ${info_obj[prop].toLowerCase()}` ))
+                                value = <span> <span className="bg-yellow-500">{info_obj[prop]}</span></span>
+                            else 
+                                value = <span> <span>{info_obj[prop]}</span></span>
                         }
                         return (
                             <li>
                                 {/* Capitalize first letter of every word in prop */}
                                 <u>{`${prop.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase())}:`}</u>
-                                {/* TODO add highlighting to matching prop words */}
                                 {value}
                             </li>
                         );
                     }
                     else return null;
                 })}
-                {/* <li>
-                    <u>Paradigms: </u>
-                    {l.paradigms.join(", ")}
-                </li>
-                <li>
-                    <u>Types: </u>
-                    {l.types.join(", ")}
-                </li>
-                <li>
-                    <u>Creators: </u>
-                    {l.creators.join(", ")}
-                </li>
-                <li>
-                    <u>Website: </u>
-                    {l.website}
-                </li> */}
-
                 <li>
                     <button>
                         <Link href={slug}>More info!</Link>

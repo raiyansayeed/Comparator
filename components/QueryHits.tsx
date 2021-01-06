@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectHits } from "../redux/reducers/hitsSlice";
 import { selectQueries } from "../redux/reducers/querySlice";
-import { LanguageWithKw } from "../redux/reducers/languageSlice";
+import { languageSlice, LanguageWithKw, selectLanguages } from "../redux/reducers/languageSlice";
 import LanguageCard from "./LanguageCard";
 
 function QueryHits() {
     const hits: LanguageWithKw[] = useSelector(selectHits);
     const queries = useSelector(selectQueries);
+    const languages = useSelector(selectLanguages);;
 
     // get matching properties of a language with the current queries
     function selectProperties(lang: LanguageWithKw) {
@@ -44,16 +45,27 @@ function QueryHits() {
                     info_obj[prop] = lang[prop];
             }
         });
+        // console.log(info_obj);
         return info_obj;
     }
 
     return (
         <div>
             <ul>
+                { !(Array.isArray(queries) && queries.length) ? // select all languages if queries are empty
+                <>
+                    {languages.map((l) => {
+                        return <LanguageCard infoData={l} />;
+                    })}
+                </>
+                :
+                <> 
                 {hits.map((l) => {
                     var lang_info_list = selectProperties(l);
                     return <LanguageCard infoData={lang_info_list} />;
                 })}
+                </>
+                }
             </ul>
         </div>
     );

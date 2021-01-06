@@ -29,7 +29,12 @@ function SearchArea(props) {
             const regex = new RegExp(`^${val}`, `i`);
             // create shallow copy of array to prevent redux state mutation error
             const tmp = [...kw_list];
-            setSuggestions(tmp.sort().filter((v) => regex.test(v)));
+            var new_suggestions = tmp.sort().filter((v) => regex.test(v));
+
+            // remove common elements between queries and the new suggestions
+            new_suggestions = new_suggestions.filter(val => !queries.includes(val));
+            
+            setSuggestions(new_suggestions);
         }
         else {
             setSuggestions([]);
