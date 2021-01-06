@@ -65,68 +65,94 @@ var origList = [
             "Distributed",
             "Process-Oriented",
         ],
-        types: ["Compiled"],
-        website: "https://www.elixir-lang.org",
+        types: ["Compiled", "VM-Based"],
+        website: "https://elixir-lang.org",
         creators: ["Jose Valim"],
         garbage_collected: "Yes",
         hello_world: `IO.puts("Hello World!")`,
     },
     {
-        name: "Elixir",
+        name: "C++",
         paradigms: [
+            "Procedural",
             "Functional",
-            "Concurrent",
-            "Distributed",
-            "Process-Oriented",
+            "Object-Oriented",
+            "Generic",
+            "Modular",
         ],
         types: ["Compiled"],
-        website: "https://www.elixir-lang.org",
-        creators: ["Jose Valim"],
-        garbage_collected: "Yes",
-        hello_world: `IO.puts("Hello World!")`,
+        website: "https://www.isocpp.org",
+        creators: ["Bjarne Stroustrup"],
+        garbage_collected: "No",
+        hello_world: `
+        std::cout << "Hello World" << endl;
+        `
     },
     {
-        name: "Elixir",
+        name: "Go",
         paradigms: [
-            "Functional",
             "Concurrent",
-            "Distributed",
-            "Process-Oriented",
+            "Functional",
+            "Imperative",
+            "Object-Oriented",
         ],
         types: ["Compiled"],
-        website: "https://www.elixir-lang.org",
-        creators: ["Jose Valim"],
+        website: "https://golang.org",
+        creators: ["Robert Griesemer", "Rob Pike", "Ken Thompson"],
         garbage_collected: "Yes",
-        hello_world: `IO.puts("Hello World!")`,
+        hello_world: `
+        package main
+
+        import "fmt"
+
+        func main() {
+            fmt.Println("hello world")
+        }
+        `
     },
     {
-        name: "Elixir",
+        name: "Java",
         paradigms: [
-            "Functional",
-            "Concurrent",
-            "Distributed",
-            "Process-Oriented",
+            "Generic",
+            "Object-Oriented",
+            "Imperative",
+            "Reflective",
         ],
-        types: ["Compiled"],
-        website: "https://www.elixir-lang.org",
-        creators: ["Jose Valim"],
+        types: [
+            "Compiled",
+            "VM-Based"
+        ],
+        website: "https://www.oracle.com/java",
+        creators: ["James Gosling"],
         garbage_collected: "Yes",
-        hello_world: `IO.puts("Hello World!")`,
+        hello_world: `
+        public class HelloWorldApp {
+            public static void main(String[] args) {
+                System.out.println("Hello World!"); // Prints the string to the console.
+            }
+        }
+        `
     },
     {
-        name: "Elixir",
+        name: "Python",
         paradigms: [
             "Functional",
-            "Concurrent",
-            "Distributed",
-            "Process-Oriented",
+            "Imperative",
+            "Object-Oriented",
+            "Structured",
+            "Reflective",
         ],
-        types: ["Compiled"],
-        website: "https://www.elixir-lang.org",
-        creators: ["Jose Valim"],
+        types: [
+            "Interpreted",
+            "Compiled",
+        ],
+        website: "https://www.python.org",
+        creators: ["Guido van Rossum"],
         garbage_collected: "Yes",
-        hello_world: `IO.puts("Hello World!")`,
-    },
+        hello_world: `
+        print("Hello World")
+        `
+    }
 ];
 
 // create keywords for each lang

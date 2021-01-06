@@ -32,11 +32,12 @@ function SearchArea(props) {
             var new_suggestions = tmp.sort().filter((v) => regex.test(v));
 
             // remove common elements between queries and the new suggestions
-            new_suggestions = new_suggestions.filter(val => !queries.includes(val));
-            
+            new_suggestions = new_suggestions.filter(
+                (val) => !queries.includes(val)
+            );
+
             setSuggestions(new_suggestions);
-        }
-        else {
+        } else {
             setSuggestions([]);
         }
     }
@@ -51,6 +52,7 @@ function SearchArea(props) {
                 updateHits([queries.concat([query.toLowerCase()]), languages])
             );
             setQuery("");
+            setError("");
         } else {
             setError(`Error: ${query} is already in your search list`);
         }
@@ -64,6 +66,7 @@ function SearchArea(props) {
                 updateHits([queries.concat([kw.toLowerCase()]), languages])
             );
             setQuery("");
+            setError("");
         } else {
             setError(`Error: ${kw} is already in your search list`);
         }
@@ -72,10 +75,11 @@ function SearchArea(props) {
     function handleKeyDown(e) {
         // arrow up/down button should select next/previous list element
         if (e.keyCode === 38 && itemPosition > 0) {
-            setItemPosition(itemPosition - 1)
+            setItemPosition(itemPosition - 1);
         } else if (e.keyCode === 40 && itemPosition < suggestions.length - 1) {
-            setItemPosition(itemPosition + 1)
-        } else if (e.keyCode === 13) { // Enter key
+            setItemPosition(itemPosition + 1);
+        } // Enter key and check if suggestions isn't empty
+        else if (e.keyCode === 13 && suggestions.length > 0) {
             setQuery(suggestions[itemPosition]);
         }
     }
@@ -104,7 +108,11 @@ function SearchArea(props) {
                             {suggestions.map((kw, index) => (
                                 <li
                                     // check if selected item is this position
-                                    className={"py-2 px-2 itemPosition-pointer hover:bg-gray-50 underline ".concat(itemPosition === index ? 'bg-gray-50' : "")}
+                                    className={"py-2 px-2 itemPosition-pointer hover:bg-gray-50 underline ".concat(
+                                        itemPosition === index
+                                            ? "bg-gray-50"
+                                            : ""
+                                    )}
                                     key={kw}
                                     onClick={(e) => handleSuggestionClick(kw)}
                                 >

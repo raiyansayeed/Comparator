@@ -21,7 +21,7 @@ function LanguageCard(props) {
             className="languageCard p-6 m-6 mx-auto rounded-xl flex items-center"
             onClick={handleClick}
             whileHover={{
-                scale: 1.2,
+                scale: 1.02,
                 transition: {
                     duration: 0.2,
                 },
@@ -45,16 +45,16 @@ function LanguageCard(props) {
                                 <>
                                     {info_obj[prop].map((val, index) => {
                                         // ignore comma for last item
-                                        if (index == info_obj[prop].length - 1) {
+                                        // check if str or (bool)str is in queries
+                                        if (queries.includes(val.toLowerCase())) {
+                                            if (index == info_obj[prop].length - 1)
+                                                return <span> <span className="bg-yellow-500">{val} </span></span>
+                                            else 
+                                                return <span> <span className="bg-yellow-500">{val}</span>, </span>
+                                        }
+                                        else if (index == info_obj[prop].length - 1) {
                                             return <span> {val}</span>
                                         } 
-                                        // check if str or (bool)str is in queries
-                                        else if (queries.includes(val.toLowerCase())) {
-                                            if (index == info_obj[prop].length - 1)
-                                                return <span className="bg-yellow-500"> {val} </span>
-                                            else 
-                                            return <span> <span className="bg-yellow-500">{val}</span>, </span>
-                                        }
                                         else {
                                             return <span> {val}, </span>
                                         }
