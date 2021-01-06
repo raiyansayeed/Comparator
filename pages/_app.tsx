@@ -19,7 +19,6 @@ interface IonIconProps
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
     > {
-    class: string;
     name: string;
     size?: string;
 }
