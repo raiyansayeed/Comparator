@@ -24,8 +24,6 @@ export type LanguageWithKw = {
 
 var origList = data;
 
-console.log(origList);
-
 // create keywords for each lang
 function createKeywords(l_list: Language[]) {
     var newList = [];
@@ -94,7 +92,6 @@ function createAllKeyWords(l_list: LanguageWithKw[]) {
 
     // remove duplicates
     new_kw_list = new_kw_list.filter((v, i, a) => a.indexOf(v) === i);
-    // console.log(new_kw_list);
 
     return new_kw_list;
 }

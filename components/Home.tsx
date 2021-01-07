@@ -20,8 +20,6 @@ function Home(pageProps) {
     function getRandomPage(e) {
         // get random number from Languages array
         var random_index = Math.floor(Math.random() * (languages.length - 1));
-        console.log(languages);
-        console.log(random_index);
         var name = languages[random_index]["name"].toLowerCase();
         router.push(`lang/${name}`);
     }
@@ -40,7 +38,7 @@ function Home(pageProps) {
                     </Link>
                 </div>
                 <div className="m-2">
-                    <a href="#placeholder">Github</a>
+                    <a href="https://github.com/DoctaRay/Comparator">Github</a>
                 </div>
             </div>
 

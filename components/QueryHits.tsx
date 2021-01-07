@@ -45,7 +45,6 @@ function QueryHits() {
                     info_obj[prop] = lang[prop];
             }
         });
-        // console.log(info_obj);
         return info_obj;
     }
 
