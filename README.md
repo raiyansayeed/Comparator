@@ -1,4 +1,4 @@
-Source code for the [Comparator Programming Language Comparison App](https://comparator.raiyansayeed.me). Written with React, Redux, Typescript, TailwindCSS, and Chakra UI.
+Source code for the [Comparator Programming Language Comparison App](https://comparator.raiyansayeed.me). Written with React, NextJS, Redux, Typescript, TailwindCSS, and Chakra UI.
 
 ## Getting Started
 
