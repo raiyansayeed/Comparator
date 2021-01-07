@@ -5,7 +5,7 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 import SearchArea from "./SearchArea";
 import QueryHits from "./QueryHits";
@@ -14,7 +14,6 @@ import { Button } from "@chakra-ui/react";
 import { selectLanguages } from "../redux/reducers/languageSlice";
 
 function Home(pageProps) {
-
     const languages = useSelector(selectLanguages);
     const router = useRouter();
 
@@ -34,15 +33,28 @@ function Home(pageProps) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className="flex flex-row items-center">
-                <Link href="/about">About</Link>
+            <div className="flex flex-row-reverse items-center">
+                <div className="m-2">
+                    <Link href="/about">
+                        <a>About</a>
+                    </Link>
+                </div>
+                <div className="m-2">
+                    <a href="#placeholder">Github</a>
+                </div>
             </div>
 
             <div className="flex flex-row items-center">
                 <p className="font-bold text-6xl mt-2 mb-8">
                     Compare Prog Lang
                 </p>
-                <Button className="ml-10" colorScheme="teal" type="submit" onClick={getRandomPage}>
+                <Button
+                    className="ml-10"
+                    colorScheme="teal"
+                    type="submit"
+                    display={["none", "inline-flex"]}
+                    onClick={getRandomPage}
+                >
                     I'm feeling lucky
                 </Button>
             </div>

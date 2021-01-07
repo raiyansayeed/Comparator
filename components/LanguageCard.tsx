@@ -18,7 +18,7 @@ function LanguageCard(props) {
 
     return (
         <motion.div
-            className="languageCard p-6 m-6 mx-auto rounded-xl flex items-center"
+            className="p-6 m-6 mx-auto rounded-xl flex items-center border-gray-400 border border-solid"
             onClick={handleClick}
             whileHover={{
                 scale: 1.02,
@@ -31,9 +31,7 @@ function LanguageCard(props) {
                 <li>
                     <b>{info_obj["name"]}</b>
                 </li>
-                {Object.keys(info_obj).map((prop, index) => {
-                    // TODO handle string vals
-                    
+                {Object.keys(info_obj).map((prop, index) => {               
                     // only put 4 keywords on a language card
                     if (index > 4) return null
 

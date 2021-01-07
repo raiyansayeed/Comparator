@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Javascript",
+        "paradigms": [
+            "Procedural",
+            "Structured",
+            "Object-Oriented",
+            "Functional",
+            "Event-Driven"
+        ],
+        "types": ["Compiled", "Interpreted"],
+        "website": "N/A",
+        "creators": ["Brendan Eich"],
+        "garbage_collected": "Yes",
+        "hello_world": "\nvar i;\nvar fib = []; // Initialize array!\n        \nfib[0] = 0;\nfib[1] = 1;\nfor (i = 2; i <= 10; i++) {\n    // Next fibonacci number = previous + one before previous\n    // Translated to JavaScript:\n    fib[i] = fib[i - 2] + fib[i - 1];\n    console.log(fib[i]);\n}"
+    },
+    {
+        "name": "Rust",
+        "paradigms": ["Functional", "Imperative", "Structured"],
+        "types": ["Compiled"],
+        "website": "https://www.rust-lang.org",
+        "creators": ["Graydon Hoare"],
+        "garbage_collected": "No",
+        "hello_world": "\nfn main() {\n    // Statements here are executed when the compiled binary is called\n\n    // Print text to the console\n    println!(\"Hello World!\");\n}"
+    },
+    {
+        "name": "Elixir",
+        "paradigms": [
+            "Functional",
+            "Concurrent",
+            "Distributed",
+            "Process-Oriented"
+        ],
+        "types": ["Compiled", "VM-Based"],
+        "website": "https://elixir-lang.org",
+        "creators": ["Jose Valim"],
+        "garbage_collected": "Yes",
+        "hello_world": "\ndefmodule ModuleName do\n    def hello do\n        IO.puts \"Hello World\"\n    end\nend\n        "
+    },
+    {
+        "name": "C++",
+        "paradigms": [
+            "Procedural",
+            "Functional",
+            "Object-Oriented",
+            "Generic",
+            "Modular"
+        ],
+        "types": ["Compiled"],
+        "website": "https://www.isocpp.org",
+        "creators": ["Bjarne Stroustrup"],
+        "garbage_collected": "No",
+        "hello_world": "\n#include <iostream>\n\nint main() {\n    std::cout << \"Hello World!\";\n    return 0;\n}\n        "
+    },
+    {
+        "name": "Go",
+        "paradigms": [
+            "Concurrent",
+            "Functional",
+            "Imperative",
+            "Object-Oriented"
+        ],
+        "types": ["Compiled"],
+        "website": "https://golang.org",
+        "creators": ["Robert Griesemer", "Rob Pike", "Ken Thompson"],
+        "garbage_collected": "Yes",
+        "hello_world": "\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"hello world\")\n}\n        "
+    },
+    {
+        "name": "Java",
+        "paradigms": ["Generic", "Object-Oriented", "Imperative", "Reflective"],
+        "types": ["Compiled", "VM-Based"],
+        "website": "https://www.oracle.com/java",
+        "creators": ["James Gosling"],
+        "garbage_collected": "Yes",
+        "hello_world": "\npublic class HelloWorldApp {\n    public static void main(String[] args) {\n        System.out.println(\"Hello World!\"); // Prints the string to the console.\n    }\n}\n        "
+    },
+    {
+        "name": "Python",
+        "paradigms": [
+            "Functional",
+            "Imperative",
+            "Object-Oriented",
+            "Structured",
+            "Reflective"
+        ],
+        "types": ["Interpreted", "Compiled"],
+        "website": "https://www.python.org",
+        "creators": ["Guido van Rossum"],
+        "garbage_collected": "Yes",
+        "hello_world": "\n        print(\"Hello World\")\n        "
+    }
+]

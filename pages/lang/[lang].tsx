@@ -61,16 +61,9 @@ function LanguagePage(props) {
                 >
                     <HamburgerIcon />
                 </Button>
-                {/* <p>Hi</p> */}
             </div>
             <div className="flex-grow flex-col items-center py-20 px-5">
                 <Link href="/">
-                    {/* <motion.button
-                    whileTap={{ scale: 1.2 }}
-                    className="absolute top-5 left-5"
-                >
-                    <ArrowBackIcon className="absolute top-5 left-5"/>
-                </motion.button> */}
                     <ArrowBackIcon
                         className="absolute top-5 left-5 cursor-pointer"
                         boxSize={10}
@@ -131,6 +124,11 @@ function LanguagePage(props) {
                                 } else if (prop == "keywords") {
                                     return null;
                                 } else if (prop == "hello_world") {
+                                    // handle special languages for prism js here
+                                    var name = item.name.toLowerCase();
+                                    if (name == "c++") {
+                                        name = "cpp";
+                                    }
                                     return (
                                         <li className="m-2" id="hello_world">
                                             <p className="underline text-xl">
@@ -140,10 +138,10 @@ function LanguagePage(props) {
                                                 <code
                                                     className={
                                                         "language-" +
-                                                        item.name.toLowerCase()
+                                                        name
                                                     }
                                                 >
-                                                    {item.hello_world}
+                                                    {item.hello_world.trim()}
                                                 </code>
                                             </pre>
                                         </li>

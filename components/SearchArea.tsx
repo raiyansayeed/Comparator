@@ -109,6 +109,7 @@ function SearchArea(props) {
                         value={query}
                         onChange={onTextChange}
                         onKeyDown={handleKeyDown}
+                        className="hover:border-gray-400"
                     ></Input>
                     <Button colorScheme="teal" type="submit">
                         Submit
