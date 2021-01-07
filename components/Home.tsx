@@ -29,7 +29,7 @@ function Home(pageProps) {
     return (
         <div className="flex flex-col py-5 px-5">
             <Head>
-                <title>Prog Lang Website</title>
+                <title>Comparator</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -46,7 +46,7 @@ function Home(pageProps) {
 
             <div className="flex flex-row items-center">
                 <p className="font-bold text-6xl mt-2 mb-8">
-                    Compare Prog Lang
+                    Comparator
                 </p>
                 <Button
                     className="ml-10"
