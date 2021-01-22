@@ -53,13 +53,13 @@ function QueryHits() {
             <ul>
                 { !(Array.isArray(queries) && queries.length) ? // select all languages if queries are empty
                 <>
-                    {languages.map((l) => {
+                    {languages.map((l, index) => {
                         return <LanguageCard infoData={l} />;
                     })}
                 </>
                 :
                 <> 
-                {hits.map((l) => {
+                {hits.map((l, index) => {
                     var lang_info_list = selectProperties(l);
                     return <LanguageCard infoData={lang_info_list} />;
                 })}

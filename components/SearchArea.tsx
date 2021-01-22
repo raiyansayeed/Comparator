@@ -128,7 +128,7 @@ function SearchArea(props) {
                                             ? "bg-gray-50"
                                             : ""
                                     )}
-                                    key={kw}
+                                    key={index}
                                     onClick={(e) => handleSuggestionClick(kw)}
                                 >
                                     {kw}

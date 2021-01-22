@@ -78,7 +78,7 @@ function LanguageCard(props) {
                     }
                     else return null;
                 })}
-                <li>
+                <li> 
                     <button>
                         <Link href={slug}>More info!</Link>
                     </button>
